@@ -1,0 +1,14 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+  int n;
+  cin >> n;
+  int m=n;
+  string ans= "0000000000";
+  for(int i=0;i<n;i++){
+    ans[9-i] = m%2 + '0';
+    m = m/2;
+  }
+  cout << ans << "\n";
+}
