@@ -1,0 +1,30 @@
+/**
+ * 難易度（体感）：★☆☆☆☆
+ * 結果： WA
+ * 解法：全探索
+ * * 【学んだこと・ポイント】
+ * 1<=c<=nではなく、1<=c && c<=n　と表記する
+ * * 【反省・詰まった点】
+ * ・計算量はなるべく減らせるように工夫する
+ * * 【計算量】
+ * ・O(N^2)
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+  int n, k;
+  cin >> n >> k;
+  int total=0;
+  for(int a=1;a<=n;a++){
+    for(int b=1;b<=n;b++){
+      int c;
+      c=k-a-b;
+      if(1<=c<=n){
+        total ++;        
+      }
+    }
+  }
+  cout << total << "\n";
+}
