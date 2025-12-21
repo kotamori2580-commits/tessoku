@@ -8,7 +8,7 @@
  * * 【反省・詰まった点】
  * ・
  * * 【計算量】
- * ・O(N log N)
+ * ・O(hw+q)
  */
 
 #include <bits/stdc++.h>
