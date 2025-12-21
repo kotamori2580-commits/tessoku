@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int Z[1509][1509];
+int A[100009],B[100009],C[100009],D[100009];
+
+int main(){
+  int h,w,n;
+  cin >> h >> w >> n;
+  for(int i=0;i<=h;i++){
+    for(int j=0;j<=w;j++){
+      Z[i][j] = 0;
+    }
+  }
+  
+  for(int i=1;i<=n;i++){
+    cin >> A[i] >> B[i] >> C[i] >> D[i];
+  }
+  
+  for(int i=1;i<=n;i++){
+    for(int k=0;k<=D[i]-B[i];k++){
+      for(int l=0;l<=C[i]-A[i];l++){
+        Z[A[i]+l][B[i]+k] += 1;
+      }
+    }
+  }
+  
+  for(int i=1;i<=h;i++){
+    for(int j=1;j<=w;j++){
+      cout << Z[i][j] <<(j==w ? "\n":" ");
+    }
+  }
+}
