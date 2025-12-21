@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+  int h, w;
+  cin >> h >> w;
+  
+  vector<vector<int>> vec(h+1, vector<int>(w+1));
+  for(int i=1;i<=h;i++){
+    vector<int> s(w+1);
+    for(int j=1;j<=w;j++){
+      int x;
+      cin >> x;
+      s[0] = 0;
+      s[j] = s[j-1] + x;
+    }
+    
+    vector<int> t(w+1);
+    for(int j=0;j<=w;j++){
+      t[j] = 0;
+    }
+    
+    vec[0] = t;
+    vec[i] = s;
+  }
+  
+  for(int j=1;j<=w;j++){
+    for(int i=1;i<=h;i++){
+      vec[i][j] = vec[i-1][j] + vec[i][j];
+    }
+  }
+  
+  int q;
+  cin >> q;
+  for(int i=0;i<q;i++){
+    int a, b, c, d;
+    cin >> a >> b >> c >> d;
+    
+    int ans;
+    ans = vec[c][d]-vec[c][b-1]-vec[a-1][d]+vec[a-1][b-1];
+    cout << ans << "\n";
+  }
+}
