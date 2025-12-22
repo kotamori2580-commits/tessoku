@@ -1,0 +1,36 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<int> vec;
+
+int main(){
+  int n;
+  cin >> n;
+  vector<int> A(n+1);
+  A[0] = 0;
+  for(int i=1;i<=n;i++){
+    cin >> A[i];
+  }
+  int d;
+  cin >> d;
+
+  vector<int> L(d+1);
+  vector<int> R(d+1);
+  L[0];
+  R[0];
+  for(int i=1;i<=d;i++){
+    cin >> L[i] >> R[i];
+    for(int j=1;j<=L[i]-1;j++){
+      vec.push_back(A[j]);
+    }
+    for(int j=R[i]+1;j<=n;j++){
+      vec.push_back(A[j]);
+    }
+
+    int ans;
+    ans = *max_element(vec.begin(), vec.end());
+    cout << ans << "\n";
+    vec.clear();
+  }
+}
