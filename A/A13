@@ -10,6 +10,8 @@
  * ・O(N log N)
  */
 
+
+//二分探索
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -40,5 +42,35 @@ int main(){
     }
     total += ok-i;
   }
+  cout << total << "\n";
+}
+
+
+
+
+
+
+//以下、しゃくとり法
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int A[100009];
+
+int main(){
+  int n, k;
+  cin >> n >> k;
+  for(int i=1;i<=n;i++){
+    cin >> A[i];
+  }
+  
+  int r=1;
+  long long total =0;
+  for(int i=1;i<=n;i++){
+    while(r<=n && A[r]-A[i]<=k){
+      r ++;
+    }
+    total += (r-1)-i;
+  } 
   cout << total << "\n";
 }
