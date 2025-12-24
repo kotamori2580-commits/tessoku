@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int A[100];
+
+int main(){
+  int n, s;
+  cin >> n >> s;
+  int total=0;
+  for(int i=1;i<=n;i++){
+    cin >> A[i];
+    total += A[i];
+  }
+  int dp[n+1][total+1];
+  for(int i=0;i<=n;i++){
+    for(int j=0;j<=total;j++){
+      dp[i][j] = 'x';
+    }
+  }
+  dp[0][0] = 'o';
+  
+  for(int i=1;i<=n;i++){
+    for(int j=0;j<=total;j++){
+      if(dp[i-1][j] == 'o'){
+        dp[i][j] = 'o';
+      }
+      else if(j>=A[i] && dp[i-1][j-A[i]] == 'o'){
+        dp[i][j] = 'o';
+      }
+    }
+  }
+  
+  if(dp[n][s] == 'o'){
+    cout << "Yes" << "\n";
+  }
+  else{
+    cout << "No" << "\n";
+  }
+}
