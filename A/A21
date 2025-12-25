@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int P[2009],A[2009],dp[2009][2009];
+
+int main(){
+  int N;
+  cin >> N;
+  for(int i=1;i<=N;i++){
+    cin >> P[i] >> A[i];
+  }
+  
+  int score1=0;
+  int score2=0;
+  dp[1][N]=0;
+  int ans =0;
+  for(int r=N;r>=1;r--){
+    for(int l=1;l<=r;l++){
+      if(l<=P[l-1] && P[l-1]<=r){
+        score1 += A[l-1];
+      }
+      else if(l<=P[r+1] && P[l-1]<=r){
+        score2 += A[r+1];
+      }
+      dp[l][r] = max(score1, score2);
+      ans = max(ans, dp[l][r]);
+    }
+  }
+  cout << ans << "\n";
+}
