@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+long long A[100009],B[100009],score[100009];
+
+int main(){
+  int N;
+  cin >> N;
+  for (int i=1;i<=N-1;i++){
+    cin >> A[i];
+  }
+  for (int i=1;i<=N-1;i++){
+    cin >> B[i];
+  }
+  for (int i=1;i<=N;i++){
+    score[i]=-1;
+  }
+  
+  score[1]=0;
+  for (int i=1;i<=N-1;i++){
+    score[A[i]] = max(score[i]+100, score[A[i]]);
+    score[B[i]] = max(score[i]+150, score[B[i]]);
+  }
+  cout << score[N] << "\n";
+}
