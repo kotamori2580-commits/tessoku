@@ -1,0 +1,36 @@
+/**
+ * 難易度（体感）：★★☆☆☆
+ * 結果：CE
+ * 解法：スタック
+ * * 【学んだこと・ポイント】
+ * ・elseに()はいらない
+ * ・push,top,pop,emptyなどstackへの操作方法がいくつかある
+ * * 【反省・詰まった点】
+ * ・
+ * * 【計算量】
+ * ・O(N)
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+  int Q;
+  cin >> Q;
+  stack<string> S;
+  for(int i=0;i<Q;i++){
+    int x;
+    cin >> x;
+    if(x==1){
+      string m;
+      cin >> m;
+      S.push(m);
+    }
+    else if(x==2){
+      cout << S.top() << endl;
+    }
+    else(){
+      S.pop();
+    }
+  }
+}
