@@ -1,0 +1,26 @@
+/**
+ * 難易度（体感）：★★☆☆☆
+ * 結果：TLE
+ * 解法：全探索
+ * * 【学んだこと・ポイント】
+ * ・互除法を適用する
+ * * 【反省・詰まった点】
+ * ・
+ * * 【計算量】
+ * ・O(min(A,B))
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+  int A, B;
+  cin >> A >> B;
+  int ans=1;
+  for(int i=1;i<=min(A, B);i++){
+    if(A%i == 0 && B%i == 0){
+      ans = i;
+    }
+  }
+  cout << ans << "\n";
+}
