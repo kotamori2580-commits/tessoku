@@ -1,0 +1,40 @@
+/**
+ * 難易度（体感）：★★☆☆☆
+ * 結果：できない
+ * 解法：[素数判定]
+ * * 【学んだこと・ポイント】
+ * ・ルートx以下までで探す、その時の書き方
+ * * 【反省・詰まった点】
+ * ・変数を設定する際はスコープに注意する
+ * * 【計算量】
+ * ・O(Q*i(i * i <= x))
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int X[10009];
+
+bool isPrime(int x){
+  bool flag=true;  
+  for(int i=2;i*i<=x;i++){
+    if(x%i == 0){
+      flag = false;
+    }
+  }
+  return flag;  
+}
+
+int main(){
+  int Q;
+  cin >> Q;
+  for(int i=1;i<=Q;i++){
+    cin >> X[i];
+    if(isPrime(X[i])){
+      cout << "Yes" << "\n";
+    }
+    else{
+      cout << "No" << "\n";
+    }
+  }
+}
