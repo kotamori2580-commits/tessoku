@@ -1,0 +1,40 @@
+/**
+ * 難易度（体感）：★★☆☆☆
+ * 結果：WA
+ * 解法：[]
+ * * 【学んだこと・ポイント】
+ * ・totalがオーバーフローして壊れる→変な値(WA)になる
+ * * 【反省・詰まった点】
+ * ・
+ * * 【計算量】
+ * ・O(N)
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+char T[100009];
+int A[100009];
+
+int main(){
+  int N;
+  cin >> N;
+  for(int i=1;i<=N;i++){
+    cin >> T[i] >> A[i];
+  }
+  
+  long long total=0;
+  for(int i=1;i<=N;i++){
+    if(T[i]=='+'){
+      total += A[i];
+    }
+    else if(T[i] == '-'){
+      total -= A[i];
+    }
+    else{
+      total *= A[i];
+    }
+    
+    cout << total%10000 << "\n";
+  }
+}
