@@ -1,0 +1,41 @@
+/**
+ * 難易度（体感）：★★★☆☆
+ * 結果：WA,TLE
+ * 解法：[積和]
+ * * 【学んだこと・ポイント】
+ * ・// current に毎回 a を掛けて余りを取る（これで a^i % mod と同じになる）
+        current = (current * (a % mod)) % mod;
+ * * 【反省・詰まった点】
+ * ・もっと計算量減らす方法ある
+ * * 【計算量】
+ * ・O(min(b, mod))
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<int> vec;
+
+int main(){
+  long long a, b;
+  cin >> a >> b;
+  for(long long i=1;i<=b;i++){
+    int n = (a^i)%1000000007;
+    
+    if(i==1){
+      vec.push_back(n);      
+    }
+    else{
+      bool flag = true;
+      if(vec[0] == n){
+        break;
+      }
+      else{
+        vec.push_back(n);
+      } 
+    }
+  }
+  int t;
+  t = vec.size();
+  cout << vec[b%t-1] << "\n";
+}
