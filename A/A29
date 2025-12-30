@@ -7,6 +7,11 @@
         current = (current * (a % mod)) % mod;
  * * 【反省・詰まった点】
  * ・もっと計算量減らす方法ある
+ * ・↓二進数に直す際の典型処理
+    int wari = (1<<i);
+    if((b/wari)%2 == 1){
+      ans = (ans*p)%m;
+    }
  * * 【計算量】
  * ・O(min(b, mod))
  */
