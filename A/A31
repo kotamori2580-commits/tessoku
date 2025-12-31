@@ -1,0 +1,14 @@
+AC
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+  long long n;
+  cin >>n;
+  long long a,b,c;
+  a = n/3;
+  b= n/5;
+  c= n/15;
+  cout << a+b-c << "\n";
+}
