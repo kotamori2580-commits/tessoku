@@ -1,5 +1,6 @@
 # 『競技プログラミングの鉄則』
 https://atcoder.jp/contests/tessoku-book
+一旦A問題の~★4までを解く
 
 # テンプレ
 ```
