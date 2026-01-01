@@ -1,0 +1,36 @@
+/**
+ * 難易度（体感）：★★★★☆
+ * 結果：WAになる、、
+ * 解法：[動的計画法]
+ * * 【学んだこと・ポイント】
+ * ・正負の判定が逆になっていた、、
+ * * 【反省・詰まった点】
+ * 体感★2くらいだった
+ * * 【計算量】
+ * ・O(N^2)
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+long long dp[2009][2009];
+
+int main(){
+  int N;
+  cin >> N;
+  for(int  j=1;j<=N;j++){
+    cin >> dp[N][j];
+  }
+  
+  for(int i=N;i>1;i--){
+    for(int j=1;j<=i-1;j++){
+      if(i%2==1){
+        dp[i-1][j] = max(dp[i][j], dp[i][j+1]);
+      }
+      else{
+        dp[i-1][j] = min(dp[i][j], dp[i][j+1]);
+      }
+    }
+  }
+  cout << dp[1][1] << "\n";
+}
