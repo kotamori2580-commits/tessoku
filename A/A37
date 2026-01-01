@@ -1,0 +1,27 @@
+AC
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int A[200009],C[200009];
+
+int main(){
+  long long N, M, B;
+  cin >> N >> M >> B;
+  for(int i=1;i<=N;i++){
+    cin >> A[i];
+  }
+  for(int j=1;j<=M;j++){
+    cin >> C[j];
+  }
+  
+  long long a_total=0,c_total=0;
+  for(int i=1;i<=N;i++){
+    a_total += A[i];
+  }
+  for(int j=1;j<=M;j++){
+    c_total += C[j];
+  }
+  
+  cout << a_total*M+B*M*N+c_total*N << "\n";
+}
