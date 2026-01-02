@@ -3,9 +3,41 @@
  * 結果：できなかった
  * 解法：[貪欲法]、終了時刻の早い順にし調べる
  * * 【学んだこと・ポイント】
- * ・
+ * ・sort関数はデフォルトで小さい順に表示する
+ * ・make_pair関数でペアを作る
  * * 【反省・詰まった点】
  * ・
  * * 【計算量】
- * ・O()
+ * ・O(NlogN)
  */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int L[300009],R[300009];
+vector<pair<int, int>> tmp;
+
+int main(){
+  int N;
+  cin >> N;
+  for(int i=1;i<=N;i++){
+    cin >> L[i] >> R[i];
+    tmp.push_back(make_pair(R[i],L[i]));
+  }
+  
+  sort(tmp.begin(), tmp.end());
+  for(int i=1;i<=N;i++){
+    R[i] = tmp[i-1].first;
+    L[i] = tmp[i-1].second;
+  }
+  
+  int current_time=0;
+  int ans =0;
+  for(int i=1;i<=N;i++){
+    if(L[i] >= current_time){
+      ans ++;
+      current_time = R[i];
+    }
+  } 
+  cout << ans << "\n";
+}
