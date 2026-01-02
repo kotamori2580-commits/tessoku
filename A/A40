@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+long long cnt[200009],A[200009];
+
+int main(){
+  int N =200000;
+  cin >> N;
+  for(int i=1;i<=N;i++){
+    cin >> A[i];
+  }
+  
+  for(int i=1;i<=100;i++){
+    for(int j=1;j<=N;j++){
+      long long num=0;
+      if(A[j]==i){
+        num ++;
+      }
+    }
+    cnt[i] = num;
+  }
+  
+  long long ans=0;
+  for(int i=1;i<=100;i++){
+    long long a=1;
+    for(int j=cnt[i];j>=cnt[i]-2;j--){
+      a *= j;
+    }
+  ans += a/6;
+  }
+  cout << ans << "\n";
+}
