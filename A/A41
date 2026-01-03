@@ -1,0 +1,55 @@
+/**
+ * 難易度（体感）：★★★☆☆
+ * 結果：WA
+ * 解法：
+ * * 【学んだこと・ポイント】
+ * ・もっと簡略化できる、、難しく考えすぎた、、
+ * * 【反省・詰まった点】
+ * ・
+ * * 【計算量】
+ * ・O(N log N)
+ */
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+long long S[200009];
+
+int main(){
+  int N;
+  cin >> N;
+  for(int i=1;i<=N;i++){
+    char x;
+    cin >> x;
+    if(x == 'B'){
+      S[i] = 1;
+    }
+    else{
+      S[i] = 2;
+    }
+  }
+  
+  for(int i=2;i<=N-1;i++){
+    if(S[i-1+2] == S[i+2] && S[i+2] == S[i+1+2]){
+      if(S[i-3+2] == S[i-2+2] && S[i+2+2] == S[i+3+2]){
+        S[i-1+2] = S[i-2+2];
+        S[i+1+2] = S[i+2+2];
+        S[i+2] = 0;
+      }
+    }
+  }
+  
+  bool flag = true;
+  for(int i=1;i<=N;i++){
+    if(S[i+2] == 1 || S[i+2] == 2){
+      flag = false;
+    }
+  }
+  if(flag){
+    cout << "Yes" << "\n";
+  }
+  else{
+    cout << "No" << "\n";
+  }
+}
