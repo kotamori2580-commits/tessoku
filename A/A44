@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+long long A[200009];
+
+int main(){
+  int N, Q;
+  cin >> N >> Q;
+  for(int i=1;i<=N;i++){
+    A[i] = i;
+  }
+  
+  for(int i=1;i<=Q;i++){
+    int a;
+    cin >>a;
+    if(a == 1){
+      int x,y;
+      cin >> x >> y;
+      A[x] = y;
+    }
+    else if(a == 2){
+      for(int i=1;i<=N;i++){
+        long long B[200009];
+        B[i] = A[N-i+1];
+      }
+      for(int i=1;i<=N;i++){
+        A[i] = B[i];
+      }
+    }
+    else{
+      int x;
+      cin >> x;
+      cout << A[x] << "\n";
+    }
+  }
+}
