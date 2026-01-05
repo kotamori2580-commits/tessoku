@@ -1,0 +1,34 @@
+/**
+ * 難易度（体感）：★★★★☆☆
+ * 結果：WA
+ * 解法：全探索
+ * * 【学んだこと・ポイント】
+ * ・全探索の基準を変える
+ * * 【反省・詰まった点】
+ * ・
+ * * 【計算量】
+ * ・O(N*N)
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int A[309],B[309];
+
+int main(){
+  int N,K;
+  cin >> N >> K;
+  for(int i=1;i<=N;i++){
+    cin >> A[i] >> B[i];
+  }
+  
+  int total=0;
+  for(int i=1;i<=N;i++){
+    for(int j= i+1;j<=N;j++){
+      if(abs(A[i]-A[j])<=K && abs(B[i]-B[j])<=K){
+        total ++;
+      }
+    }
+  }
+  cout << total << "\n";
+}
