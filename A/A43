@@ -1,0 +1,35 @@
+/**
+ * 難易度（体感）：★★★★☆☆
+ * 結果：できなかった
+ * 解法：発想の転換
+ * * 【学んだこと・ポイント】
+ * ・グラフにして考えるとよい
+ * * 【反省・詰まった点】
+ * ・
+ * * 【計算量】
+ * ・O(N)
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int A[200009];
+char B[200009];
+
+int main(){
+  int N, L;
+  cin >> N >> L;
+  for(int i=1;i<=N;i++){
+    cin >> A[i] >> B[i];
+  }
+  int ans=0;
+  for(int i=1;i<=N;i++){
+    if(B[i] == 'E'){
+      ans = max(ans, L-A[i]);
+    }
+    else{
+      ans = max(ans, A[i]);
+    }
+  }
+  cout << ans << "\n";
+}
