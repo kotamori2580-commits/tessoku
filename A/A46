@@ -1,0 +1,65 @@
+/**
+ * 難易度（体感）：★★★☆☆
+ * 結果：できなかった
+ * 解法：[貪欲法]
+ * * 【学んだこと・ポイント】
+ * ・初期化の位置に注意！！
+ * * 【反省・詰まった点】
+ * ・行ったかどうかはflagで管理する
+ * * 【計算量】
+ * ・O(N**2)
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int X[159],Y[159],P[159];
+int N;
+
+double getdis(int i,int j){
+  return(sqrt((X[i]-X[j])*(X[i]-X[j])+(Y[i]-Y[j])*(Y[i]-Y[j])));
+}
+
+bool arrived[159];
+
+void greedy(){
+  P[1] = 1;
+  arrived[1] = true;
+  int current = 1;
+  int min_id;
+  
+  for(int j=2;j<=N;j++){
+    for(int i=2;i<=N;i++){
+      double min_dis=100000.0;
+      if(arrived[i] == true){
+        continue;
+      }
+      else{
+        double new_dis;
+        new_dis = getdis(current, i);
+        if(min_dis > new_dis){
+          min_dis = new_dis;
+          min_id = i;
+        }
+      }
+    }
+    
+    current  = min_id;
+    P[j] = current;
+    arrived[current] = true;    
+  }
+  
+  P[N+1] = 1;
+}
+
+
+int main(){
+  cin >> N;
+  for(int i=1;i<=N;i++){
+    cin >> X[i] >> Y[i];
+  }
+  greedy();
+  for(int i =1;i<=N+1;i++){
+    cout << P[i] << "\n";
+  }
+}
