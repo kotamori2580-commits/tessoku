@@ -1,3 +1,15 @@
+/**
+ * 難易度（体感）：★★★★☆
+ * 結果：setの使い方見た、WA
+ * 解法：[]
+ * * 【学んだこと・ポイント】
+ * 
+ * * 【反省・詰まった点】
+ * ・itrがSの範囲を超えてた時の処理が記入不足だった
+ * * 【計算量】
+ * ・O(Q)
+ */
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -22,12 +34,7 @@ int main(){
       int b_3;
       cin >> b_3;
       auto itr = S.lower_bound(b_3);
-      if(itr == S.end()){
-        cout << "-1" << "\n";
-      }
-      else {
-        cout << (*itr) << "\n";
-      }
+      cout << (*itr) << "\n";
     }
   }  
 }
