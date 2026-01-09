@@ -1,0 +1,34 @@
+/**
+ * 難易度（体感）：★★☆☆☆
+ * 結果：AC、mapの使い方は見た
+ * 解法：[map]
+ * * 【学んだこと・ポイント】
+ * ・
+ * * 【反省・詰まった点】
+ * 
+ * * 【計算量】
+ * ・O(Q)
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+  int Q;
+  cin >> Q;
+  map<string, int> MAP;
+  for(int i=1;i<=Q;i++){
+    int a;
+    cin >> a;
+    if(a==1){
+      string name1;
+      cin >> name1;
+      cin >> MAP[name1];
+    }
+    else{
+      string name2;
+      cin >> name2;
+      cout << MAP[name2] << "\n";
+    }
+  }
+}
