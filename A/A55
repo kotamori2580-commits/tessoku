@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+  int Q;
+  cin >> Q;
+  set<int> S;
+  for(int i=1;i<=Q;i++){
+    int a;
+    cin >> a;
+    if(a==1){
+      int b_1;
+      cin >> b_1;
+      S.insert(b_1);
+    }
+    else if(a==2){
+      int b_2;
+      cin >> b_2;
+      S.erase(b_2);
+    }
+    else{
+      int b_3;
+      cin >> b_3;
+      auto itr = S.lower_bound(b_3);
+      if(itr == S.end()){
+        cout << "-1" << "\n";
+      }
+      else {
+        cout << (*itr) << "\n";
+      }
+    }
+  }  
+}
