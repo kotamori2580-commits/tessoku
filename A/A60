@@ -1,0 +1,40 @@
+/**
+ * 難易度（体感）：★★★★☆
+ * 結果：できない
+ * 解法：[スタック]
+ * * 【学んだこと・ポイント】
+ * ・スタックの宣言: stack<int, int> は不正です。2つの値を保持したい場合は stack<pair<int, int>> を使います
+ * ・ペアの作り方: (i-1, A[i-1]) はカンマ演算子として処理され、単一の数値になってしまいます。ペアを作るには {i-1, A[i-1]} または make_pair を使います。
+ * * 【反省・詰まった点】
+ * ・
+ * * 【計算量】
+ * ・O(N)
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int A[200009];
+
+int main(){
+  int N;
+  cin >> N;
+  for(int i=1;i<=N;i++){
+    cin >> A[i];
+  }
+  
+  cout << -1 << " ";
+  stack<pair<int, int>> S;
+  for(int i=2;i<=N;i++){
+    S.push(make_pair(i-1, A[i-1]));
+    while( !S.empty() && S.top().second < A[i]){
+      S.pop();
+    }
+    if(S.empty()){
+      cout << -1 << (i==N ? "\n":" ");
+    }
+    else{
+     cout << S.top().first << (i==N ? "\n":" ");      
+    }
+  }
+}
