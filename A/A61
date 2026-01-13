@@ -1,0 +1,29 @@
+/**
+ * 難易度（体感）：★★☆☆☆
+ * 結果：CE
+ * 解法：[例：動的計画法 / 二分探索 / 累積和
+ * * 【学んだこと・ポイント】
+ * ・グラフの隣接リスト表記を学んだ
+ * * 【反省・詰まった点】
+ * ・出力の仕方に手間取った
+ * * 【計算量】
+ * ・O(N+M)　計算量は少し複雑、、
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+  int N,M;
+  cin >> N >> M;
+  vector<vector<int>> vec(N);
+  for(int =0;i<M;i++){
+    int A,B;
+    cin >> A >>B;
+    vec[A].push_back(B);
+    vec[B].push_back(A);
+  }
+  for(int i=1;i<=N;i++){
+    cout << i << ":" << vec[i] << "\n";
+  }
+}
