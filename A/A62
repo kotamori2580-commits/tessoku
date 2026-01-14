@@ -10,7 +10,7 @@
  * * 【反省・詰まった点】
  * ・
  * * 【計算量】
- * ・O(N log N)
+ * ・O(N+M)
  */
 
 #include <bits/stdc++.h>
