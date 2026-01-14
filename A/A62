@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int N,M;
+cin >> N >> M;
+int col(N);
+
+int main(){
+  vector<vector<int>> vec(N);
+  for(int i=0;i<M;i++){
+    int A, B;
+    cin >> A >> B;
+    vec[A].push_back(B);
+    vec[B].push_back(A);
+  }
+  
+  int current =1;
+  for(int i=0;i<N;i++){
+    for(int j=0;j<vec[i].size();j++){
+      int nex = vec[i][j]-1;
+      void dfs(current){
+        if(col[nex] == 0){
+          dfs(nex);
+          col[nex]=1;
+          current = nex;
+          if(current == 1){
+            break;
+          }
+        }
+        else{
+          return;
+        }
+      }
+    }
+  }
+  
+  bool flag = true;
+  for(int i=0;i<N;i++){
+    if(col[i] == 0){
+      flag = false;
+    }
+  }
+  
+  if(flag){
+    cout << "The graph is connected." << "\n";
+  }
+  else{
+    cout << "The graph is not connected." << "\n";
+  }
+}
