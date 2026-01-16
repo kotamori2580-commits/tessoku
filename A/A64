@@ -1,0 +1,57 @@
+/**
+ * 難易度（体感）：★★★★☆
+ * 結果：CE
+ * 解法：ダイクストラ法
+ * * 【学んだこと・ポイント】
+ * ・
+ * * 【反省・詰まった点】
+ * ・
+ * * 【計算量】
+ * ・O(N log N)
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int N, M;
+vector<vector<int, int>> G(N+1);
+
+for(int i=1;i<=N){
+  kakutei[i] = false;
+  cur[i] = 200000;
+}
+
+int main(){
+  cin >> N >> M;
+  for(int i=1;i<=M;i++){
+    int A,B,C;
+    cin >> A >> B >> C;
+    G[A].push_back(make_pair(B, C));
+    G[B].push_back(make_pair(A, C));    
+  }
+  
+  queue<vector<int, int>> Q;
+  while(!Q.empty()){
+    int pos = 1;
+    cur[1] = 0;
+    
+    for(int i=1;i<=N;i++){
+      pos = i;
+      for(int i=0;i<G[pos].size();i++){
+        int nex = G[pos][i].first;
+        int cost = G[pos][i].second;
+        int min_dis = cur[nex];
+        if(min_dis > (cur[pos]+cost)){
+          min_dis = cur[pos] + cost;
+          cur[nex] = min_dis; 
+        }
+        Q.push_back(make_pair(nex, cur(nex));
+      }
+      kakutei[Q.top().first] = true;
+      Q.pop();
+    }
+  }
+  for(int i=1;i<=N;i++){
+    cout << cur[i] << "\n";
+  }
+}
