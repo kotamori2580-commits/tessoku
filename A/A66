@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int par(100009);
+int siz(100009);
+
+int root(int x){
+  while(true){
+    if(par[x] == -1){
+      break;
+    }
+    x = par[x];
+  }
+  return x;
+}
+
+int main(){
+  int N, Q;
+  cin >> N >> Q;
+  for(int i=0;i<=N;i++){
+    par[i] = -1;
+  }
+  for(int i=1;i<=Q;i++){
+    int a,b,c;
+    cin >> a >> b >> c;
+    if(a==1){
+      if(siz[root(c)]>siz[root(b)]){
+        par[root(b)] = root(c);
+        siz[root(c)] += siz[root(b)]:
+      }
+      else{
+        par[root(c)] = root(b);
+        siz[root(b)] += siz[root(c)];
+      }
+    }
+    else{
+      if(root(b) == root(c)){
+        cout << "Yes" << "\n";
+      }
+      else{
+        cout << "No" << "\n";
+      }
+    }
+  }
+}
