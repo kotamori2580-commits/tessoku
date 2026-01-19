@@ -1,3 +1,16 @@
+/**
+ * 難易度（体感）：★★★☆☆
+ * 結果：CE
+ * 解法：union-find 木
+ * * 【学んだこと・ポイント】
+ * ・配列の長さは[]で指定する
+ * ・
+ * * 【反省・詰まった点】
+ * ・経路圧縮の実装方法が分からなかった
+ * * 【計算量】
+ * ・O(log N)
+ */
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -26,7 +39,7 @@ int main(){
     if(a==1){
       if(siz[root(c)]>siz[root(b)]){
         par[root(b)] = root(c);
-        siz[root(c)] += siz[root(b)]:
+        siz[root(c)] += siz[root(b)];
       }
       else{
         par[root(c)] = root(b);
