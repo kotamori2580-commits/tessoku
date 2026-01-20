@@ -1,0 +1,35 @@
+/**
+ * 難易度（体感）：★★★☆☆
+ * 結果：CE
+ * 解法：
+ * * 【学んだこと・ポイント】
+ * ・ベクトルはmain関数の中で宣言するのが一番安全
+ * ・intの四則演算では計算結果もintになってしまう
+ * * 【反省・詰まった点】
+ * ・
+ * * 【計算量】
+ * ・O(N log N)
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int N;
+int A(N+1), (N+1);
+
+int main(){
+  cin >> N;
+  for(int i=1;i<=N;i++){
+    cin >> A[i];
+  }
+  for(int i=1;i<=N;i++){
+    cin >> B[i];
+  }
+  sort(B.begin(), B.end(), greater());
+  sort(A.begin(), A.end());
+  long long ans=0;
+  for(int i=1;i<=N;i++){
+    ans += A[i]*B[i];
+  }
+  cout << ans << "\n";
+}
