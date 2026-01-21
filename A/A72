@@ -1,0 +1,94 @@
+/**
+ * 難易度（体感）：★★★★☆
+ * 結果：WA
+ * 解法：貪欲法　→　ビット全探索にする
+ * * 【学んだこと・ポイント】
+ * ・
+ * * 【反省・詰まった点】
+ * ・むずいよ、、、
+ * * 【計算量】
+ * ・O(HWK)
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int H, W, K;
+vector<vector<char>> A(H);
+
+void paint(H, W, A){
+  vector<int> line(H);
+  vector<int> row(W);
+  for(int i=0;i<H;i++){
+    line[i] = 0;
+  }
+  for(int j=0;j<W;j++){
+    row[j] = 0;
+  }
+  for(int i=0;i<H;i++){
+    for(int j=0;j<W;j++){
+      if(A[i][j] == '.'){
+        line[i] ++;
+      }
+    }
+  }
+  for(int j=0;j<W;j++){
+    for(int i=0;i<H;i++){
+      if(A[i][j] == '.'){
+        row[j] ++;
+      }
+    }
+  }
+  
+  int max=0;
+  vector<int> order = [-1,-1];
+  
+  for(int i=0;i<H;i++){
+    if(line[i] > max){
+      max = line[i];
+      order[0] = 0;
+      order[1] = i;
+    }
+  }
+  for(int j=0;j<W;j++){
+    if(row[j] > max){
+      max = row[j];
+      order[0] = 1;
+      order[1] = j;
+    }
+  }
+  if(order[0] == 0){
+    for(int j=0;j<W;j++){
+      A[order[1]][j] = '#';
+    }
+  }
+  else{
+    for(int i=0;i<H;i++){
+      A[i][order[1]] = '#';
+    }
+  }
+}
+
+
+int main(){
+  cin >> H >> W >> K;
+  for(int i=0;i<H;i++){
+    for(int j=0;j<W;j++){
+      cin >> A[i][j];
+    }
+  }
+  
+  for(int i=0;i<K;i++){
+    paint(H, W, A);
+  }
+  
+  int ans=0;
+  for(int i=0;i<H;i++){
+    for(int j=0;j<W;j++){
+      if(A[i][j]== '#'){
+        ans ++;
+      }
+    }
+  }
+  cout << ans << "\n";
+}
