@@ -1,3 +1,25 @@
+/**
+ * 難易度（体感）：★★★★☆
+ * 結果：できんなかった
+ * 解法：[問題文の言い換え / 二分探索]
+ * * 【学んだこと・ポイント】
+ * ・二分探索の典型的な書き方を覚えておく、leftは常にOK、rightは常にNGとなるようにしておく
+
+while (right - left > 1) {
+        long long mid = left + (right - left) / 2;
+
+        if (条件式 = true) {
+            left = mid;   // OKなら、もっと大きくできるかも (leftを上げる)
+        } else {
+            right = mid;  // NGなら、mid自体がダメなので right = mid (-1はしない！)
+        }
+    }
+ * * 【反省・詰まった点】
+ * ・
+ * * 【計算量】
+ * ・O(N log N)
+ */
+
 #include <bits/stdc++.h>
 using namespace std;
 
