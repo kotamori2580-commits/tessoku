@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+long long A[100009];
+long long N, L, K;
+
+bool check(long long x){
+  int current_cut=0;
+  int cut_count=0;
+  for(int i=1;i<=N;i++){
+    if((A[i]-current_cut)>=x && (L-A[i])>=x){
+      cut_count ++;
+      current_cut = A[i];
+    }
+  }
+  if(cut_count>=K){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+int main(){
+  cin >> N >> L >> K;
+  A[0]=0;
+  A[N+1]=L;
+  for(int i=1;i<=N;i++){
+    cin >> A[i];
+  }
+  
+  long long left=0;
+  long long right=L;
+  while(right-left>1){
+    if(check((left+right)/2)){
+      left = (left+right)/2;
+    }
+    else{
+      right = (left+right)/2;
+    }
+  }
+  cout << left << "\n";
+}
